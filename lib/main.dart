@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:wecode_assignment_9/src/models/cities_model.dart';
 
-import './home_screen.dart';
-import './mock_data.dart';
+import 'src/screens/home_screen.dart';
+import 'src/mock/mock_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,11 +25,14 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView.builder(
           itemCount: mockData.length,
-          itemBuilder: (context, index) => HomeScreen(
-            name: mockData[index]['name'],
-            imgURL: mockData[index]['imageURL'],
-            description: mockData[index]['description'],
-          ),
+          itemBuilder: (context, index) {
+            List<Cities> city = mockData.map((e) {
+              return Cities.fromMap(e);
+            }).toList();
+            return HomeScreen(
+              city: city[index],
+            );
+          },
         ),
       ),
     );

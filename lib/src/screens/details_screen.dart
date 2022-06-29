@@ -1,14 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:wecode_assignment_9/src/models/cities_model.dart';
 
 class Details extends StatelessWidget {
-  String? name;
-  String? imgURL;
-  String? description;
+  Details({required this.city});
 
-  Details(
-      {required this.name, required this.imgURL, required this.description});
+  Cities city;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class Details extends StatelessWidget {
             width: double.infinity,
             height: 250,
             child: Image.network(
-              imgURL!,
+              city.imgURL,
               fit: BoxFit.cover,
             ),
           ),
@@ -30,14 +28,14 @@ class Details extends StatelessWidget {
             height: 50,
           ),
           Text(
-            name!,
+            city.name,
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            description!,
+            city.description,
             style: TextStyle(
               fontSize: 16,
             ),

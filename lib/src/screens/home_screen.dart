@@ -1,15 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import './details_screen.dart';
+import 'package:wecode_assignment_9/src/models/cities_model.dart';
+import 'details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  String? name;
-  String? imgURL;
-  String? description;
+  HomeScreen({required this.city});
 
-  HomeScreen({required this.name, required this.imgURL, this.description});
-
+  final Cities city;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,9 +15,7 @@ class HomeScreen extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => Details(
-              name: name,
-              imgURL: imgURL,
-              description: description,
+              city: city,
             ),
           ),
         );
@@ -34,7 +30,7 @@ class HomeScreen extends StatelessWidget {
               width: 300,
               height: 220,
               child: Image.network(
-                imgURL!,
+                city.imgURL,
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 color: Color.fromARGB(255, 198, 198, 198),
               ),
               child: Text(
-                name!,
+                city.name,
                 style: TextStyle(
                   color: Color.fromARGB(255, 117, 117, 117),
                   fontSize: 20,
